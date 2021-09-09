@@ -6,4 +6,4 @@ python and automation is life
 
 AND 
 
-Paste the path of the picture files given in line no. 149,160 ( NOTE!!: the name of the file is already written so just give the path till the folder where the pictures are kept )
+Paste the path of the picture files given in line no. 149,160 ( NOTE!!: the name of the picture file is already written so just give the path till the folder where the pictures are kept )
