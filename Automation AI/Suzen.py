@@ -146,7 +146,7 @@ if __name__ == "__main__":
                 time.sleep(2.25)
                 tempo=1
                 while tempo == 1:
-                    if pyautogui.locateOnScreen("#path here",confidence=0.6) != None:
+                    if pyautogui.locateOnScreen("#path here\\search_bar.png",confidence=0.6) != None:
                         tempo = 2
                     else:
                         time.sleep(0.5)
@@ -157,7 +157,7 @@ if __name__ == "__main__":
                 pyautogui.typewrite(search_string)
                 time.sleep(1)
                 while tempo==1:
-                    if pyautogui.locateOnScreen("path here", confidence=0.8) != None:
+                    if pyautogui.locateOnScreen("path here\\top_result_bar.png", confidence=0.8) != None:
                         tempo = 2
                     else:
                         time.sleep(0.5)
