@@ -17,13 +17,14 @@ import wikipedia #pip install wikipedia
 import webbrowser
 import os
 
+a = 1
 
 # Setting up the voice output
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
-print(voices[1].id)
-engine.setProperty('voice', voices[1].id)
+print(voices[2].id)
+engine.setProperty('voice', voices[2].id)
 
 def speak(audio):
     engine.say(audio)
@@ -64,10 +65,22 @@ def takeCommand():
         return "None"
     return query
 
-a = 1
+def sleep():
+    global a
+    while a == 2:
+        wake_up_query = takeCommand().lower()
+        if 'wake up' in wake_up_query or 'susan' in wake_up_query:
+            a = 1
+            speak("yes sir!")
+            AI()
 
-if __name__ == "__main__":
-    wishMe()
+        else:
+            a = 2
+
+wishMe()
+
+def AI():
+    global a
     while a == 1:
         query = takeCommand().lower()
         
@@ -130,6 +143,8 @@ if __name__ == "__main__":
                 pyautogui.click()
             
             else:
+                speak("do you want me to sleep")
+                yesno = takeCommand().lower()
                 search_string = query
                 pyautogui.keyDown('winleft')
                 pyautogui.press('d')
@@ -165,6 +180,9 @@ if __name__ == "__main__":
                 pyautogui.moveTo(862, 176)#For 1080p screens only
                 time.sleep(0.4)
                 pyautogui.click()#For 1080p screens only
+                if 'yes' in yesno:
+                    a = 2
+                    sleep()    
         
         # simple time
 
@@ -181,17 +199,17 @@ if __name__ == "__main__":
   
         # Minimize current application
     
-        elif 'minimize current' or 'minimize this' in query:
-            pyautogui.keyDown('winleft')
-            pyautogui.press('down')
-            pyautogui.keyUp('winleft')
+        # elif 'minimize current' or 'minimize this' in query:
+        #     pyautogui.keyDown('winleft')
+        #     pyautogui.press('down')
+        #     pyautogui.keyUp('winleft')
   
         # Minimize all apps and go to home screen
 
         elif 'minimize' in query:
             pyautogui.keyDown('winleft')
             pyautogui.press('d')
-            pyautogui.keyUp('winleft')
+            pyautogui.keyUp('winleft')                
 
         # opening applications
 
@@ -276,6 +294,11 @@ if __name__ == "__main__":
 
         elif 'stop' in query or 'i am done' in query:
             speak('closing')
-            a = 2
+            a = 0
 
-        
+        elif 'sleep' in query:
+            speak('Take care of yourself sir')
+            a = 2
+            sleep()
+
+AI()
