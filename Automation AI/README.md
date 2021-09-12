@@ -7,3 +7,9 @@ python and automation is life
 AND 
 
 Paste the path of the picture files given in line no. 149,160 ( NOTE!!: the name of the picture file is already written so just give the path till the folder where the pictures are kept )
+
+AND 
+
+I you want to cange the voice of your AI try this video https://www.youtube.com/watch?v=M4KeqY4nZEM&t=439s.
+
+Enjoy;)
