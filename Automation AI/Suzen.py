@@ -14,7 +14,7 @@ import pyttsx3 #pip install pyttsx3 and then if you get an error please read the
 import speech_recognition as sr #pip install speechrecognition
 import datetime
 import wikipedia #pip install wikipedia
-import webbrowser
+import pywhatkit #pip install pywhatkit
 import os
 
 a = 1
@@ -132,16 +132,8 @@ def AI():
             
             if 'on youtube' in query:
                 song_name = song_name.replace("on youtube", "")
-                speak('trying to play' + search_string)
-
-                # Point(x=464, y=525) first video
-                webdriver = "# Webdriver path here"
-                browser = webdriver.Chrome(webdriver)
-                for i in range(1):
-                    matched_elements = browser.get("https://www.youtube.com/search?q=" + song_name + "&start=" + str(i))
-                time.sleep(1)
-                pyautogui.moveTo(505, 457, duration=0.2)#(x=505, y=457) values for youtube first video in 1080pscreen
-                pyautogui.click()
+                song_name = song_name.replace("on yt", "")
+                pywhatkit.playonyt(song_name)
             
             else:
                 speak("do you want me to sleep")
