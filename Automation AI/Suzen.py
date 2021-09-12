@@ -23,8 +23,8 @@ a = 1
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
-print(voices[2].id)
-engine.setProperty('voice', voices[2].id)
+print(voices[1].id)
+engine.setProperty('voice', voices[1].id)
 
 def speak(audio):
     engine.say(audio)
@@ -127,17 +127,18 @@ def AI():
        # play a song
 
         elif 'play' in query:
-
+            song_name = query[3:]
+            speak("ok sir, playing" + song_name)
+            
             if 'on youtube' in query:
-                query = query.replace("on youtube", "")
-                search_string = query
+                song_name = song_name.replace("on youtube", "")
                 speak('trying to play' + search_string)
 
                 # Point(x=464, y=525) first video
                 webdriver = "# Webdriver path here"
                 browser = webdriver.Chrome(webdriver)
                 for i in range(1):
-                    matched_elements = browser.get("https://www.youtube.com/search?q=" + search_string + "&start=" + str(i))
+                    matched_elements = browser.get("https://www.youtube.com/search?q=" + song_name + "&start=" + str(i))
                 time.sleep(1)
                 pyautogui.moveTo(505, 457, duration=0.2)#(x=505, y=457) values for youtube first video in 1080pscreen
                 pyautogui.click()
@@ -169,7 +170,7 @@ def AI():
                 pyautogui.click(x=88, y=121)#For 1080p screens only
                 time.sleep(0.2)
                 pyautogui.click(x=809, y=33)#For 1080p screens only
-                pyautogui.typewrite(search_string)
+                pyautogui.typewrite(song_name)
                 time.sleep(1)
                 while tempo==1:
                     if pyautogui.locateOnScreen("path here\\top_result_bar.png", confidence=0.8) != None:
